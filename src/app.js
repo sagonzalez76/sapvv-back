@@ -6,6 +6,7 @@ const app = express();
 // Import routes
 import projectRoutes from "./routes/projects.routes.js";
 import taskRoutes from "./routes/tasks.routes.js";
+import authRoutes from "./routes/auth.routes.js";
 
 // Middlewares
 // app.use(morgan("dev"));
@@ -14,5 +15,6 @@ app.use(express.json());
 // Routes
 app.use("/projects", projectRoutes);
 app.use("/tasks", taskRoutes);
+app.use("/", authRoutes);
 
 export default app;

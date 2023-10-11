@@ -2,7 +2,7 @@ import { DataTypes } from "sequelize";
 import { sequelize } from "../database/database.js";
 
 export const Task = sequelize.define(
-  "task",
+  "tasks",
   {
     id: {
       type: DataTypes.INTEGER,
@@ -16,8 +16,12 @@ export const Task = sequelize.define(
       type: DataTypes.BOOLEAN,
       defaultValue: false,
     },
+    description: {
+      type: DataTypes.STRING,
+    },
   },
   {
     timestamps: false,
-  }
+  },
+
 );
