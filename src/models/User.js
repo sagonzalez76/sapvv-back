@@ -17,10 +17,15 @@ export const User = sequelize.define(
         },
         email: {
             type: DataTypes.STRING,
-            isEmail: true
+            isEmail: true,
+            unique:true
         },
         password: {
             type: DataTypes.STRING
+        },
+        role: {
+            type: DataTypes.ENUM,
+            values: ['student', 'teacher', 'director']
         }
 
 

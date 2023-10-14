@@ -1,14 +1,15 @@
+// Import routes
 import express from "express";
 import morgan from "morgan";
-
-const app = express();
-
-// Import routes
 import projectRoutes from "./routes/projects.routes.js";
 import taskRoutes from "./routes/tasks.routes.js";
 import authRoutes from "./routes/auth.routes.js";
+import dotenv from 'dotenv';
+
+const app = express();
 
 // Middlewares
+dotenv.config();
 // app.use(morgan("dev"));
 app.use(express.json());
 

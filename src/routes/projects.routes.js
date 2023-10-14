@@ -7,12 +7,16 @@ import {
   deleteProject,
   getProjectTasks,
 } from "../controllers/project.controller.js";
+import { checkAuth } from "../middleware/authenticate.js";
+import { checkRoleAuth } from "../middleware/roleAuthenticate.js";
+
+
 
 const router = Router();
 
 // Routes
 router.post("/", createProject);
-router.get("/", getProjects);
+router.get("/", checkAuth, checkRoleAuth(['student', "director"]), getProjects);
 router.put("/:id", updateProject);
 router.delete("/:id", deleteProject);
 router.get("/:id", getProject);
