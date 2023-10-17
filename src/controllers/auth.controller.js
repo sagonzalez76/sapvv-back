@@ -26,16 +26,8 @@ export async function signIn(req, res) {
           tokenSession
         }
       )
-     
 
-      // res.header('Authorization', token).json({
-      //   data: { token },
-      //   message: `Hola de nuevo ${user.name} ${user.lastname} 👋`
-      // })
     }
-
-
-
   } catch (error) {
     res.status(401).json({ message: "El correo electronico no existe" });
   }
