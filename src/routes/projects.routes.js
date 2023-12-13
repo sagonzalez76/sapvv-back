@@ -16,9 +16,10 @@ const router = Router();
 
 // Routes
 router.post("/", createProject);
-router.get("/", checkAuth, checkRoleAuth(['student', "director"]), getProjects);
+router.get("/", checkAuth, checkRoleAuth(['student', "director", 'juridico', 'enlace', 'dinamizador']), getProjects);
 router.put("/:id", updateProject);
 router.delete("/:id", deleteProject);
+
 router.get("/:id", getProject);
 
 router.get("/:id/tasks", getProjectTasks);

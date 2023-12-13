@@ -9,7 +9,7 @@ export const tokenSign = async (user) => {
         },
         process.env.ACCESS_TOKEN_SECRET,
         {
-            expiresIn: "30s"
+            expiresIn: "1h"
         }
     );
 }
@@ -25,6 +25,5 @@ export const verifyToken = async (token) => {
 }
 
 export const decodeSign = async (token) => {
-
 
 }

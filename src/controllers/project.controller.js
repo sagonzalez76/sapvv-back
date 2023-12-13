@@ -16,6 +16,7 @@ export async function getProjects(req, res) {
 
 export async function createProject(req, res) {
   const { name, priority, description, deliveryDate } = req.body;
+  console.log(req.body);
   try {
     let newProject = await Project.create(
       {
@@ -57,7 +58,8 @@ export const updateProject = async (req, res) => {
   try {
     const { id } = req.params;
     const { name, priority, description } = req.body;
-
+    console.log(req.body);
+    
     const project = await Project.findByPk(id);
     project.name = name;
     project.priority = priority;

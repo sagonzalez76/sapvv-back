@@ -2,10 +2,10 @@ import { verifyToken } from '../helpers/generateToken.js'
 
 export const checkAuth = async (req, res, next) => {
     try {
-        const token = req.headers.authorization.split(' ').pop() 
+        const token = await req.headers.authorization.split(' ').pop()
         const tokenData = await verifyToken(token)
-        console.log(tokenData.id);
-        if (tokenData.id) {
+        console.log(tokenData);
+        if (tokenData) {
             next()
         } else {
             res.status(409)

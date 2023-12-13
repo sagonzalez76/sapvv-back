@@ -30,10 +30,10 @@ export async function updateTask(req, res) {
   const { id } = req.params;
   // const { projectid, name, done } = req.body;
   try {
-    // const updatedTask = await Task.update(
-    //   { name, done, projectid },
-    //   { where: { id } }
-    // );
+    const updatedTask = await Task.update(
+      { name, done, projectid },
+      { where: { id } }
+    );
 
     const task = await Task.findOne({
       attributes: ["name", "projectId", "done", "id"],
