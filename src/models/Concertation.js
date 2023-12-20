@@ -1,28 +1,26 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../database/database.js";
-import { User } from "./User.js";
+import { Municipality } from "./Municipality.js";
 
-export const Role = sequelize.define(
-    "roles",
+export const Concertation = sequelize.define(
+    "concertations",
     {
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
+        name: {
+            type: DataTypes.STRING
+        },
         description: {
             type: DataTypes.STRING
         }
+       
 
     },
     {
         timestamps: true
     }
-)
+);
 
-
-Role.hasMany(User, {
-    foreignKey: "roleId",
-    sourceKey: "id",
-});
-User.belongsTo(Role, { foreignKey: "roleId", targetId: "id" });

@@ -4,7 +4,7 @@ export const checkAuth = async (req, res, next) => {
     try {
         const token = await req.headers.authorization.split(' ').pop()
         const tokenData = await verifyToken(token)
-        console.log(tokenData);
+        // console.log(tokenData);
         if (tokenData) {
             next()
         } else {

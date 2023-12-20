@@ -22,11 +22,11 @@ export const User = sequelize.define(
         },
         password: {
             type: DataTypes.STRING
-        },
-        role: {
-            type: DataTypes.ENUM,
-            values: ['student', 'teacher', 'director', 'estudiante', 'enlace', 'juridico', 'dinamizador']
         }
+        // role: {
+        //     type: DataTypes.ENUM,
+        //     values: ['student', 'teacher', 'director', 'estudiante', 'enlace', 'juridico', 'dinamizador']
+        // }
     },
     {
         timestamps: false

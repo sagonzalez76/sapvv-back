@@ -1,6 +1,8 @@
 import bcrypt from 'bcrypt'
 import { User } from "../models/User.js";
 import { tokenSign } from '../helpers/generateToken.js';
+import { Role } from '../models/Role.js';
+import { Sequelize } from "sequelize";
 
 export async function signIn(req, res) {
 
@@ -9,8 +11,16 @@ export async function signIn(req, res) {
   try {
     const user = await User.findOne({
       where: { email },
-      attributes: ["id", "name", "lastname", "email", "password", "role"]
+      attributes: ["id", "name", "lastname", "email", "password", "roleId"],
+      include: {
+        model: Role,
+        attributes: ["description"],
+        where: Sequelize.literal('users."roleId" = "role"."id"'),
+        required: false
+      },
     });
+    // console.log(user.role.description);
+ 
     const validation = await bcrypt.compare(password, user.password);
 
     if (!validation) {
@@ -30,17 +40,18 @@ export async function signIn(req, res) {
     }
   } catch (error) {
     res.status(401).json({ message: "El correo electronico no existe" });
+    // console.log(error);
   }
 
 }
 
 export async function signUp(req, res) {
 
-  let { name, lastname, email, password, role } = req.body;
+  let { name, lastname, email, password, roleId } = req.body;
 
   password = await bcrypt.hash(password, 14)
 
-  console.log(password);
+  console.log('este es el rollllllllllllllllllll', (req.body))
   try {
     let newUser = await User.create(
       {
@@ -48,10 +59,10 @@ export async function signUp(req, res) {
         lastname,
         email,
         password,
-        role
+        roleId
       },
       {
-        fields: ["name", "lastname", "email", "password", "role"],
+        fields: ["name", "lastname", "email", "password", "roleId"],
       }
     );
 

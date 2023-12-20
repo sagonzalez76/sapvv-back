@@ -1,28 +1,31 @@
+
 import { DataTypes } from "sequelize";
 import { sequelize } from "../database/database.js";
-import { User } from "./User.js";
+import { Agent } from "./Agent.js";
 
-export const Role = sequelize.define(
-    "roles",
+
+export const Comunity = sequelize.define(
+    "comunitys",
     {
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
-        description: {
+        name: {
             type: DataTypes.STRING
         }
-
     },
     {
         timestamps: true
+    },
+    {
+        freezeTableName: true
     }
-)
+);
 
-
-Role.hasMany(User, {
-    foreignKey: "roleId",
+Comunity.hasMany(Agent, {
+    foreignKey: "comunityId",
     sourceKey: "id",
 });
-User.belongsTo(Role, { foreignKey: "roleId", targetId: "id" });
+Agent.belongsTo(Comunity, { foreignKey: "comunityId", targetId: "id" });

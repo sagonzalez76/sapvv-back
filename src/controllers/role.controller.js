@@ -5,7 +5,7 @@ export async function getRoles(req, res) {
         const roles = await Role.findAll({
             atributes: ["id", "description"],
         });
-        console.log(roles);
+        // console.log(roles);
         res.json(roles);
     } catch (error) {
         res.status(500).json({
