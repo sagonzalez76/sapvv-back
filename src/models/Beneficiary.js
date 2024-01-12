@@ -2,8 +2,8 @@ import { DataTypes } from "sequelize";
 import { sequelize } from "../database/database.js";
 
 
-export const Agent = sequelize.define(
-    "agents",
+export const Beneficiary = sequelize.define(
+    "beneficiarys",
     {
         id: {
             type: DataTypes.INTEGER,

@@ -12,9 +12,12 @@ import emitterRoutes from "./routes/emitter.routes.js"
 import municipalityRoutes from "./routes/municipalitys.routes.js"
 import typeComunityRoutes from "./routes/typeComunity.routes.js"
 import comunityRoutes from "./routes/comunitys.routes.js"
+import originRoutes from "./routes/origins.routes.js"
+
 import agentRoutes from "./routes/agents.routes.js"
 import departmentRoutes from "./routes/department.routes.js"
 import concertationRoutes from "./routes/concertation.routes.js"
+import beneficiaryRoutes from "./routes/beneficiarys.routes.js"
 
 const app = express();
 
@@ -24,20 +27,23 @@ dotenv.config();
 // app.use(morgan("dev"));
 app.use(express.json());
 app.use(cors())
+
 // Routes
 app.use("/users", userRoutes);
 app.use("/departments", departmentRoutes)
 app.use("/emitters", emitterRoutes)
 app.use("/concertations", concertationRoutes)
-
-
 app.use("/municipalitys", municipalityRoutes)
 app.use("/agents", agentRoutes)
 app.use("/projects", projectRoutes);
 app.use("/programs", projectRoutes);
 app.use("/tasks", taskRoutes);
 app.use("/roles", rolesRoutes);
+app.use("/beneficiarys", beneficiaryRoutes);
 app.use("/comunitys", comunityRoutes);
+app.use("/origins", originRoutes);
+
+
 app.use("/type_comunitys", typeComunityRoutes);
 
 app.use("/", authRoutes);

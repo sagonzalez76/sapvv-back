@@ -1,6 +1,6 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../database/database.js";
-import { Municipality } from "./Municipality.js";
+import { Origin } from "./Origin.js";
 
 export const Emitter = sequelize.define(
     "emitters",
@@ -26,3 +26,8 @@ export const Emitter = sequelize.define(
     }
 );
 
+Emitter.hasMany(Origin, {
+    foreignKey: "emitterId",
+    sourceKey: "id",
+});
+Origin.belongsTo(Emitter, { foreignKey: "emitterId", targetId: "id" });
