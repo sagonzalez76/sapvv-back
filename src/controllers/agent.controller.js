@@ -39,7 +39,6 @@ export async function getAgents(req, res) {
         // return res.status(500).json({ message: error });
     }
 }
-
 export async function updateAgent(req, res) {
     const { id } = req.params;
     const { name, lastname, phone, id_type, id_number, comunityId } = req.body;

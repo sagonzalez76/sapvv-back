@@ -1,27 +1,27 @@
-import { Router } from "express";
-import {
-  getProjects,
-  createProject,
-  updateProject,
-  getProject,
-  deleteProject,
-  getProjectTasks,
-} from "../controllers/project.controller.js";
-import { checkAuth } from "../middleware/authenticate.js";
-import { checkRoleAuth } from "../middleware/roleAuthenticate.js";
+// import { Router } from "express";
+// import {
+//   getPrograms,
+//   createProgram,
+//   updateProgram,
+//   getProgram,
+//   deleteProgram,
+//   getProgramTasks,
+// } from "../controllers/program.controller.js";
+// import { checkAuth } from "../middleware/authenticate.js";
+// import { checkRoleAuth } from "../middleware/roleAuthenticate.js";
 
 
 
-const router = Router();
+// const router = Router();
 
-// Routes
-router.post("/", createProject);
-router.get("/", checkAuth, checkRoleAuth(['student', "director", 'juridico', 'enlace', 'dinamizador']), getProjects);
-router.put("/:id", updateProject);
-router.delete("/:id", deleteProject);
+// // Routes
+// router.post("/", createProgram);
+// router.get("/", checkAuth, checkRoleAuth(['student', "director", 'juridico', 'enlace', 'dinamizador']), getPrograms);
+// router.put("/:id", updateProgram);
+// router.delete("/:id", deleteProgram);
 
-router.get("/:id", getProject);
+// router.get("/:id", getProgram);
 
-router.get("/:id/tasks", getProjectTasks);
+// router.get("/:id/tasks", getProgramTasks);
 
-export default router;
+// export default router;

@@ -42,12 +42,18 @@ export async function getOrigins(req, res) {
 
 export async function updateOrigin(req, res) {
     const { id } = req.params;
-    const { name, emitterId } = req.body;
+    const { name, emitterId, type, filing, origin_date, notification_date } = req.body;
 
     try {
 
         const origin = await Origin.findByPk(id);
+
         origin.name = name;
+        origin.type = type;
+        origin.filing = filing;
+        origin.origin_date = origin_date;
+        origin.notification_date = notification_date;
+
         origin.emitterId = parseInt(emitterId, 10); // Convertir a entero
         await origin.save();
 

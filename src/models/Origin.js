@@ -1,5 +1,6 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../database/database.js";
+import { Commitment } from "./Commitment.js";
 
 
 export const Origin = sequelize.define(
@@ -48,3 +49,8 @@ export const Origin = sequelize.define(
     }
 
 );
+Origin.hasMany(Commitment, {
+    foreignKey: "originId",
+    sourceKey: "id",
+});
+Commitment.belongsTo(Origin, { foreignKey: "originId", targetId: "id" });

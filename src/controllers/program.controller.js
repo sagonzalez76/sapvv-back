@@ -14,7 +14,7 @@ export async function getPrograms(req, res) {
 }
 
 export async function createProgram(req, res) {
-    const { name} = req.body;
+    const { name } = req.body;
     try {
         let newProgram = await Program.create(
             {
@@ -52,11 +52,11 @@ export async function getProgram(req, res) {
 export const updateProgram = async (req, res) => {
     try {
         const { id } = req.params;
-        const { name} = req.body;
+        const { name } = req.body;
 
         const program = await Program.findByPk(id);
         program.name = name;
-     
+
         await program.save();
 
         res.json(program);
@@ -68,7 +68,7 @@ export const updateProgram = async (req, res) => {
 export async function deleteProgram(req, res) {
     const { id } = req.params;
     try {
-       
+
         await Program.destroy({
             where: {
                 id,

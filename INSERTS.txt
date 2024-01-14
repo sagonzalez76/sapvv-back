@@ -1,4 +1,4 @@
-INSERT INTO projects (name, priority, description)
+INSERT INTO programs (name, priority, description)
 VALUES
   ('Producto 1', 5, 'Descripción del producto 1'),
   ('Producto 2', 8, 'Descripción del producto 2'),
@@ -34,7 +34,7 @@ VALUES
 
 
 
-INSERT INTO tasks (name, done, description, "projectId")
+INSERT INTO tasks (name, done, description, "programId")
 VALUES
   ('Revisar informe mensual', false, 'Revisión de los datos y estadísticas del informe mensual.', 1),
   ('Enviar invitaciones de reunión', true, 'Enviar invitaciones para la reunión de planificación.', 1),

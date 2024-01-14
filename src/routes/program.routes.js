@@ -20,6 +20,6 @@ router.put("/:id", updateProgram);
 router.delete("/:id", deleteProgram);
 router.get("/:id", getProgram);
 
-router.get("/:id/tasks", getProjectTasks);
+// router.get("/:id/tasks", getProgramTasks);
 
 export default router;

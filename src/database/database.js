@@ -13,6 +13,6 @@ export const sequelize = new Sequelize(
     //   require: 30000,
     //   idle: 10000,
     // },
-    // logging: false,
+    logging: false,
   }
 );

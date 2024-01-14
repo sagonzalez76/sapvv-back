@@ -2,9 +2,9 @@ import { Task } from "../models/Task.js";
 
 export async function createTask(req, res) {
   try {
-    const { name, done, projectId } = req.body;
+    const { name, done, programId } = req.body;
     const newTask = await Task.create({
-      projectId,
+      programId,
       name,
       done,
     });
@@ -17,7 +17,7 @@ export async function createTask(req, res) {
 export async function getTasks(req, res) {
   try {
     const tasks = await Task.findAll({
-      attributes: ["id", "projectId", "name", "done"],
+      attributes: ["id", "programId", "name", "done"],
       order: [["id", "DESC"]],
     });
     res.json(tasks);
@@ -28,15 +28,15 @@ export async function getTasks(req, res) {
 
 export async function updateTask(req, res) {
   const { id } = req.params;
-  // const { projectid, name, done } = req.body;
+  // const { programid, name, done } = req.body;
   try {
     const updatedTask = await Task.update(
-      { name, done, projectid },
+      { name, done, programid },
       { where: { id } }
     );
 
     const task = await Task.findOne({
-      attributes: ["name", "projectId", "done", "id"],
+      attributes: ["name", "programId", "done", "id"],
       where: { id },
     });
 
@@ -68,7 +68,7 @@ export async function getTask(req, res) {
   try {
     const task = await Task.findOne({
       where: { id },
-      attributes: ["id", "projectId", "name", "done"],
+      attributes: ["id", "programId", "name", "done"],
     });
     res.json(task);
   } catch (error) {

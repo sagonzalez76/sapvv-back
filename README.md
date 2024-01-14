@@ -13,29 +13,29 @@ This is the basic relationship that we are using in this example
 
 ![](./docs/diagram.png)
 
-## Project Structure
+## Program Structure
 
 ```bash
 .
 ├── package.json
 ├── requests
-│   ├── projects.http
+│   ├── programs.http
 │   └── tasks.http
 ├── sql
 │   └── db.sql
 └── src
     ├── app.js
     ├── controllers
-    │   ├── project.controller.js
+    │   ├── program.controller.js
     │   └── task.controller.js
     ├── database
     │   └── database.js
     ├── index.js
     ├── models
-    │   ├── Project.js
+    │   ├── Program.js
     │   └── Task.js
     └── routes
-        ├── projects.routes.js
+        ├── programs.routes.js
         └── tasks.routes.js
 
 7 directories, 15 files
