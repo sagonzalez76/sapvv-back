@@ -17,7 +17,7 @@ const upload = multer({ dest: 'uploads/' }); // Directorio donde se guardarán l
 
 // Routes
 router.post("/", upload.array('archivos'), createEvidence);
-router.get("/", checkAuth, checkRoleAuth(['student', "director", 'juridico', 'enlace', 'dinamizador']), getEvidences);
+router.get("/get", getEvidences);
 router.put("/:id", updateEvidence);
 router.delete("/:id", deleteEvidence);
 router.get("/:id", getEvidence);

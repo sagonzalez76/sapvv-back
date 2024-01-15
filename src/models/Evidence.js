@@ -10,10 +10,14 @@ export const Evidence = sequelize.define(
             primaryKey: true,
             autoIncrement: true,
         },
+        name: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
         type: {
             type: DataTypes.ENUM,
             values: [
-                'audio/mpeg', 'audio/wav', 'audio/ogg', // Tipos de audio
+                'audio/mpeg', 'audio/wav', 'audio/ogg', 'audio/x-m4a', // Tipos de audio
                 'image/jpeg', 'image/png', 'image/gif', 'image/svg+xml', // Tipos de imagen
                 'video/mp4', 'video/webm', 'video/ogg', // Tipos de video
                 'application/pdf', // PDF

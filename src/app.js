@@ -1,6 +1,10 @@
 // Import routes
 import cors from 'cors';
 import express from "express";
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
 import morgan from "morgan";
 import programRoutes from "./routes/program.routes.js"
 import rolesRoutes from "./routes/roles.routes.js"
@@ -34,9 +38,16 @@ dotenv.config();
 
 // app.use(morgan("dev"));
 app.use(express.json());
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
 app.use(cors())
 
 // Routes
+app.use('/uploads', express.static(path.join(__dirname, '..', 'uploads')));
+
+
 app.use("/", authRoutes);
 app.use("/users", userRoutes);
 app.use("/departments", departmentRoutes)

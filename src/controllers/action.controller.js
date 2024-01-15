@@ -53,7 +53,7 @@ export async function getAction(req, res) {
 export const updateAction = async (req, res) => {
     try {
         const { id } = req.params;
-        const { description, done} = req.body;
+        const { description, done } = req.body;
 
         const action = await Action.findByPk(id);
         action.description = description;
@@ -85,16 +85,16 @@ export async function deleteAction(req, res) {
 
 
 export async function getActionEvidences(req, res) {
-    
-  const { id } = req.params;
-  try {
-    const evidences = await Evidence.findAll({
-      attributes: ["id", "type"],
-      where: { actionId: id },
-    });
-    res.json(evidences);
-  } catch (e) {
-    return res.status(500).json({ message: e.message });
-  }
+
+    const { id } = req.params;
+    try {
+        const evidences = await Evidence.findAll({
+            attributes: ["id", "type", "url", "name"],
+            where: { actionId: id },
+        });
+        res.json(evidences);
+    } catch (e) {
+        return res.status(500).json({ message: e.message });
+    }
 }
 

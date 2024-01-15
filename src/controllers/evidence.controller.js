@@ -2,14 +2,15 @@ import { Evidence } from "../models/Evidence.js";
 import path from 'path';
 import fs from 'fs/promises'
 import { Action } from "../models/Action.js";
+import { Sequelize } from "sequelize";
 
 export async function getEvidences(req, res) {
     try {
         const evidences = await Evidence.findAll({
-            attributes: ["id", "type", "url"],
+            attributes: ["id", "name", "type", "url" ],
             include: {
                 model: Action,
-                attributes: ["name"],
+                attributes: ["description"],
                 where: Sequelize.literal('evidences."actionId" = "action"."id"'),
 
                 required: true
@@ -29,13 +30,13 @@ export async function createEvidence(req, res) {
     const archivos = req.files;
     const id = req.body.id[0]
     console.log(archivos);
-    console.log(req.body.id);
+    // console.log(req.body.id);
     try {
         // Lógica para procesar y guardar los archivos, por ejemplo, en la base de datos
         const evidences = [];
 
         for (const archivo of archivos) {
-            const { mimetype, filename } = archivo;
+            const { mimetype, filename, originalname } = archivo;
             console.log("este es el tipo de archivoooooo", mimetype, filename);
             // Lógica para guardar el archivo en algún lugar (por ejemplo, en la carpeta 'uploads')
             const filePath = path.join('uploads', filename);
@@ -43,14 +44,16 @@ export async function createEvidence(req, res) {
 
             // Añade la evidencia al array
             evidences.push({
+                name:originalname,
                 type: mimetype,
-                url: filePath,
+                url: filename,  // Almacena solo el nombre del archivo
                 actionId: id
             });
         }
 
         // Luego, crea las evidencias en la base de datos
         const newEvidences = await Evidence.bulkCreate(evidences);
+        // console.log(newEvidences);
 
         res.json(newEvidences); // Solo envía una respuesta aquí, después de crear las evidencias
     } catch (error) {
