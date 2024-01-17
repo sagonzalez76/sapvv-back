@@ -20,12 +20,13 @@ import originRoutes from "./routes/origins.routes.js"
 import commitmentRoutes from "./routes/commitments.routes.js"
 import actionRoutes from "./routes/action.routes.js"
 import evidenceRoutes from "./routes/evidence.routes.js"
-
 import agentRoutes from "./routes/agents.routes.js"
 import departmentRoutes from "./routes/department.routes.js"
 import concertationRoutes from "./routes/concertation.routes.js"
 import beneficiaryRoutes from "./routes/beneficiarys.routes.js"
 import multer from 'multer';
+
+import downloadRoutes from "./routes/download.routes.js"
 
 // Configuracion de multer
 const storage = multer.memoryStorage();
@@ -65,5 +66,7 @@ app.use("/commitments", commitmentRoutes);
 app.use("/evidences", evidenceRoutes);
 app.use("/actions", actionRoutes);
 app.use("/type_comunitys", typeComunityRoutes);
+app.use("/download", downloadRoutes);
+
 
 export default app;

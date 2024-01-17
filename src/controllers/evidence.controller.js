@@ -39,21 +39,21 @@ export async function createEvidence(req, res) {
             const { mimetype, filename, originalname } = archivo;
             console.log("este es el tipo de archivoooooo", mimetype, filename);
             // Lógica para guardar el archivo en algún lugar (por ejemplo, en la carpeta 'uploads')
-            const filePath = path.join('uploads', filename);
+            const filePath = path.join('uploads', originalname);
             await fs.rename(archivo.path, filePath);
 
             // Añade la evidencia al array
             evidences.push({
                 name:originalname,
                 type: mimetype,
-                url: filename,  // Almacena solo el nombre del archivo
+                url: originalname,  // Almacena solo el nombre del archivo
                 actionId: id
             });
         }
 
         // Luego, crea las evidencias en la base de datos
         const newEvidences = await Evidence.bulkCreate(evidences);
-        // console.log(newEvidences);
+        console.log(newEvidences);
 
         res.json(newEvidences); // Solo envía una respuesta aquí, después de crear las evidencias
     } catch (error) {

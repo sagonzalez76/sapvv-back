@@ -1,5 +1,7 @@
 import { Action } from "../models/Action.js";
 import { Evidence } from "../models/Evidence.js";
+import { Sequelize } from "sequelize";
+
 
 export async function getActions(req, res) {
     try {
@@ -83,18 +85,105 @@ export async function deleteAction(req, res) {
     }
 }
 
+// export async function getActionEvidences(req, res) {
+//     const { id } = req.params;
 
-export async function getActionEvidences(req, res) {
+//     try {
+//         const evidences = await Evidence.findAll({
+//             attributes: ["id", "type", "url", "name"],
+//             where: {
+//                 actionId: id,
+//                 [Sequelize.Op.and]: [
+//                     Sequelize.literal(`"evidences"."type"::text LIKE 'image%'`),
+//                 ],
+//             },
+//         });
+//         res.json(evidences);
+//     } catch (e) {
+//         return res.status(500).json({ message: e.message });
+//     }
 
+
+// }
+
+
+export async function getImageEvidences(req, res) {
     const { id } = req.params;
+
     try {
         const evidences = await Evidence.findAll({
-            attributes: ["id", "type", "url", "name"],
-            where: { actionId: id },
+            attributes: ["id", "type", "url", "name", "createdAt"],
+            where: {
+                actionId: id,
+                [Sequelize.Op.and]: [
+                    Sequelize.literal(`"evidences"."type"::text LIKE 'image%'`),
+                ],
+            },
+        });
+        res.json(evidences);
+    } catch (e) {
+        return res.status(500).json({ message: e.message });
+    }
+
+
+}
+
+export async function getVideoEvidences(req, res) {
+    const { id } = req.params;
+
+    try {
+        const evidences = await Evidence.findAll({
+            attributes: ["id", "type", "url", "name", "createdAt"],
+            where: {
+                actionId: id,
+                [Sequelize.Op.and]: [
+                    Sequelize.literal(`"evidences"."type"::text LIKE 'video%'`),
+                ],
+            },
         });
         res.json(evidences);
     } catch (e) {
         return res.status(500).json({ message: e.message });
     }
 }
+
+
+export async function getAudioEvidences(req, res) {
+    const { id } = req.params;
+
+    try {
+        const evidences = await Evidence.findAll({
+            attributes: ["id", "type", "url", "name", "createdAt"],
+            where: {
+                actionId: id,
+                [Sequelize.Op.and]: [
+                    Sequelize.literal(`"evidences"."type"::text LIKE 'audio%'`),
+                ],
+            },
+        });
+        res.json(evidences);
+    } catch (e) {
+        return res.status(500).json({ message: e.message });
+    }
+}
+export async function getDocumentEvidences(req, res) {
+    const { id } = req.params;
+
+    try {
+        const evidences = await Evidence.findAll({
+            attributes: ["id", "type", "url", "name", "createdAt"],
+            where: {
+                actionId: id,
+                [Sequelize.Op.and]: [
+                    Sequelize.literal(`"evidences"."type"::text LIKE 'application%'`),
+                ],
+            },
+        });
+        res.json(evidences);
+    } catch (e) {
+        return res.status(500).json({ message: e.message });
+    }
+}
+
+
 

@@ -18,9 +18,9 @@ export const Evidence = sequelize.define(
             type: DataTypes.ENUM,
             values: [
                 'audio/mpeg', 'audio/wav', 'audio/ogg', 'audio/x-m4a', // Tipos de audio
-                'image/jpeg', 'image/png', 'image/gif', 'image/svg+xml', // Tipos de imagen
+                'image/jpeg', 'image/png', 'image/gif', 'image/svg+xml', "image/cr2", // Tipos de imagen
                 'video/mp4', 'video/webm', 'video/ogg', // Tipos de video
-                'application/pdf', // PDF
+                'application/pdf', "application/x-compressed", // PDF
                 'text/plain', 'text/html', 'application/msword', 'application/vnd.ms-excel', 'application/docx', 'docx', 'application/doc',// Tipos de texto
             ],
             allowNull: false,
