@@ -3,7 +3,7 @@ import { sequelize } from "../database/database.js";
 import { Action } from "./Action.js";
 
 export const Dependency = sequelize.define(
-    "dependencys",
+    "dependencyyys",
     {
         id: {
             type: DataTypes.INTEGER,

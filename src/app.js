@@ -10,7 +10,7 @@ import programRoutes from "./routes/program.routes.js"
 import rolesRoutes from "./routes/roles.routes.js"
 import taskRoutes from "./routes/tasks.routes.js";
 import authRoutes from "./routes/auth.routes.js";
-import {config} from 'dotenv';
+import { config } from 'dotenv';
 import userRoutes from "./routes/user.routes.js"
 import emitterRoutes from "./routes/emitter.routes.js"
 import municipalityRoutes from "./routes/municipalitys.routes.js"
@@ -25,7 +25,7 @@ import departmentRoutes from "./routes/department.routes.js"
 import concertationRoutes from "./routes/concertation.routes.js"
 import beneficiaryRoutes from "./routes/beneficiarys.routes.js"
 import multer from 'multer';
-
+import pg from 'pg';
 import downloadRoutes from "./routes/download.routes.js"
 
 // Configuracion de multer
@@ -38,7 +38,11 @@ const app = express();
 
 //Dotenv
 config();
+// const pool = new pg.Pool({
 
+//     connectionString: process.env.DB_URL,
+//     ssl: true
+// })
 // app.use(morgan("dev"));
 app.use(express.json());
 
@@ -50,6 +54,11 @@ app.use(cors())
 // Routes
 app.use('/uploads', express.static(path.join(__dirname, '..', 'uploads')));
 
+// app.use("/ping", async (req, res) => {
+//     const result = await pool.query('SELECT NOW()')
+
+//     return res.json(result.rows[0])
+// });
 
 app.use("/", authRoutes);
 app.use("/users", userRoutes);
