@@ -10,7 +10,7 @@ import programRoutes from "./routes/program.routes.js"
 import rolesRoutes from "./routes/roles.routes.js"
 import taskRoutes from "./routes/tasks.routes.js";
 import authRoutes from "./routes/auth.routes.js";
-import dotenv from 'dotenv';
+import {config} from 'dotenv';
 import userRoutes from "./routes/user.routes.js"
 import emitterRoutes from "./routes/emitter.routes.js"
 import municipalityRoutes from "./routes/municipalitys.routes.js"
@@ -35,7 +35,9 @@ const upload = multer({ storage: storage });
 const app = express();
 
 // Middlewares
-dotenv.config();
+
+//Dotenv
+config();
 
 // app.use(morgan("dev"));
 app.use(express.json());

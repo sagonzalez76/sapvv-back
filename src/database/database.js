@@ -1,18 +1,18 @@
 import Sequelize from "sequelize";
 
 export const sequelize = new Sequelize(
-  "sapvv", // db name,
-  "postgres", // username
-  "0000", // password
+  "sapvv_e0a8", // db name,
+  "sapvv_e0a8_user", // username
+  "V5S3ODaEVxmfd4tB3weoh6tjflmBSN1k", // password
   {
-    host: "localhost",
+    host: process.env.DB_URL,
     dialect: "postgres",
     // pool: {
-    //   max: 5,
+    //   max: 10,
     //   min: 0,
     //   require: 30000,
     //   idle: 10000,
     // },
-    logging: false,
+    logging: true,
   }
 );

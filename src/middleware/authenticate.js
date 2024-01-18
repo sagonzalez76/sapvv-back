@@ -2,7 +2,7 @@ import { verifyToken } from '../helpers/generateToken.js'
 
 export const checkAuth = async (req, res, next) => {
     try {
-        console.log("Este es el header" + req.headers.authorization);
+        // console.log("Este es el header" + req.headers.authorization);
         const token = await req.headers.authorization.split(' ').pop()
      
         const tokenData = await verifyToken(token)

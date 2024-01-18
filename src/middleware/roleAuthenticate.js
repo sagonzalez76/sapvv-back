@@ -19,7 +19,7 @@ export const checkRoleAuth = (roles) => async (req, res, next) => {
 
 
         });
-    
+
         if ([].concat(roles).includes(userData.role.description)) {
             next()
         } else {
