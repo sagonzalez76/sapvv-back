@@ -2,8 +2,9 @@ import { DataTypes } from "sequelize";
 import { sequelize } from "../database/database.js";
 import { Action } from "./Action.js";
 
-export const Dependency = sequelize.define(
-    "dependencys",
+
+export const TypeAction = sequelize.define(
+    "typeActions",
     {
         id: {
             type: DataTypes.INTEGER,
@@ -11,12 +12,6 @@ export const Dependency = sequelize.define(
             autoIncrement: true
         },
         name: {
-            type: DataTypes.STRING
-        },
-        phone: {
-            type: DataTypes.STRING
-        },
-        address: {
             type: DataTypes.STRING
         }
 
@@ -26,8 +21,9 @@ export const Dependency = sequelize.define(
     }
 );
 
-Dependency.hasMany(Action, {
-    foreignKey: "dependencyId",
+
+TypeAction.hasMany(Action, {
+    foreignKey: "typeActionId",
     sourceKey: "id",
 });
-Action.belongsTo(Dependency, { foreignKey: "dependencyId", targetId: "id" });
+Action.belongsTo(TypeAction, { foreignKey: "typeActionId", targetId: "id" });

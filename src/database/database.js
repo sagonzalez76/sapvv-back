@@ -21,3 +21,21 @@ export const sequelize = new Sequelize(
     logging: false,
   }
 );
+
+
+// export const sequelize = new Sequelize(
+//   "sapvv", // db name,
+//   "postgres", // username
+//   "0000", // password
+//   {
+//     host: "localhost",
+//     dialect: "postgres",
+//     // pool: {
+//     //   max: 5,
+//     //   min: 0,
+//     //   require: 30000,
+//     //   idle: 10000,
+//     // },
+//     logging: false,
+//   }
+// );

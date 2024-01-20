@@ -1,4 +1,5 @@
 import { Action } from "../models/Action.js";
+import { Dependency } from "../models/Dependency.js";
 import { Evidence } from "../models/Evidence.js";
 import { Sequelize } from "sequelize";
 
@@ -7,6 +8,9 @@ export async function getActions(req, res) {
     try {
         const actions = await Action.findAll({
             atributes: ["id", "description", "done"],
+            include: { all: true, nested: true },
+            
+             
         });
         res.json(actions);
     } catch (error) {
@@ -17,14 +21,14 @@ export async function getActions(req, res) {
 }
 
 export async function createAction(req, res) {
-    const { description, done } = req.body;
+    const { description, done, dependencyId, typeActionId } = req.body;
     try {
         let newAction = await Action.create(
             {
-                description, done
+                description, done, dependencyId, typeActionId
             },
             {
-                fields: ["description", "done"],
+                fields: ["description", "done", "dependencyId", "typeActionId"],
             }
         );
         return res.json(newAction);
@@ -55,11 +59,13 @@ export async function getAction(req, res) {
 export const updateAction = async (req, res) => {
     try {
         const { id } = req.params;
-        const { description, done } = req.body;
+        const { description, done, dependencyId, typeActionId  } = req.body;
 
         const action = await Action.findByPk(id);
         action.description = description;
         action.done = done;
+        action.dependencyId = dependencyId;
+        action.typeActionId = typeActionId;
 
 
         await action.save();

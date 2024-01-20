@@ -15,6 +15,8 @@ import userRoutes from "./routes/user.routes.js"
 import emitterRoutes from "./routes/emitter.routes.js"
 import municipalityRoutes from "./routes/municipalitys.routes.js"
 import typeComunityRoutes from "./routes/typeComunity.routes.js"
+import typeActionRoutes from "./routes/typeAction.routes.js"
+
 import comunityRoutes from "./routes/comunitys.routes.js"
 import originRoutes from "./routes/origins.routes.js"
 import commitmentRoutes from "./routes/commitments.routes.js"
@@ -24,6 +26,7 @@ import agentRoutes from "./routes/agents.routes.js"
 import departmentRoutes from "./routes/department.routes.js"
 import concertationRoutes from "./routes/concertation.routes.js"
 import beneficiaryRoutes from "./routes/beneficiarys.routes.js"
+import dependencyRoutes from "./routes/dependency.routes.js"
 import multer from 'multer';
 import pg from 'pg';
 import downloadRoutes from "./routes/download.routes.js"
@@ -63,6 +66,8 @@ app.use('/uploads', express.static(path.join(__dirname, '..', 'uploads')));
 app.use("/", authRoutes);
 app.use("/users", userRoutes);
 app.use("/departments", departmentRoutes)
+app.use("/dependencys", dependencyRoutes)
+
 app.use("/emitters", emitterRoutes)
 app.use("/concertations", concertationRoutes)
 app.use("/municipalitys", municipalityRoutes)
@@ -77,6 +82,8 @@ app.use("/commitments", commitmentRoutes);
 app.use("/evidences", evidenceRoutes);
 app.use("/actions", actionRoutes);
 app.use("/type_comunitys", typeComunityRoutes);
+app.use("/type_actions", typeActionRoutes);
+
 app.use("/download", downloadRoutes);
 
 

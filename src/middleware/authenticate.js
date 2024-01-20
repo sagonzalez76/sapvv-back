@@ -4,7 +4,7 @@ export const checkAuth = async (req, res, next) => {
     try {
         // console.log("Este es el header" + req.headers.authorization);
         const token = await req.headers.authorization.split(' ').pop()
-     
+
         const tokenData = await verifyToken(token)
         // console.log(tokenData);
         if (tokenData) {
@@ -17,7 +17,7 @@ export const checkAuth = async (req, res, next) => {
     } catch (e) {
         console.log(e)
         res.status(409)
-        res.send({ error: 'No tienes acceso!' + req.headers.authorization})
+        res.send({ error: 'No tienes acceso!' })
     }
 
 }
