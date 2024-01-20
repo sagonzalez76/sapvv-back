@@ -5,7 +5,7 @@ export const sequelize = new Sequelize(
   "sapvv_e0a8_user", // nombre de usuario
   "V5S3ODaEVxmfd4tB3weoh6tjflmBSN1k", // contraseña
   {
-    host: "postgres://sapvv_e0a8_user:V5S3ODaEVxmfd4tB3weoh6tjflmBSN1k@dpg-cmkla07109ks73eer2p0-a/sapvv_e0a8", // nombre del host
+    host: "dpg-cmkla07109ks73eer2p0-a.ohio-postgres.render.com", // nombre del host
     dialect: "postgres",
     dialectOptions: {
       ssl: {
