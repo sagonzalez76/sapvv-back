@@ -30,6 +30,7 @@ import departmentRoutes from "./routes/department.routes.js"
 import concertationRoutes from "./routes/concertation.routes.js"
 import beneficiaryRoutes from "./routes/beneficiarys.routes.js"
 import dependencyRoutes from "./routes/dependency.routes.js"
+import economicActivityRoutes from "./routes/economicActivity.routes.js"
 import multer from 'multer';
 import pg from 'pg';
 import downloadRoutes from "./routes/download.routes.js"
@@ -90,6 +91,8 @@ app.use("/evidences", evidenceRoutes);
 app.use("/actions", actionRoutes);
 app.use("/type_comunitys", typeComunityRoutes);
 app.use("/type_actions", typeActionRoutes);
+app.use("/economic_activitys", economicActivityRoutes);
+
 
 app.use("/download", downloadRoutes);
 
