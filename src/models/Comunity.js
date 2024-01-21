@@ -15,7 +15,7 @@ export const Comunity = sequelize.define(
         },
         holder_type: {
             type: DataTypes.ENUM,
-            values: ['Comunidad', 'Persona'],
+            values: ['Comunidad', 'Persona', 'Emprendedor'],
             allowNull: false
 
         },
@@ -46,8 +46,34 @@ export const Comunity = sequelize.define(
         genre: {
             type: DataTypes.ENUM,
             values: ['Masculino', 'Femenino'],
-       
+            allowNull: true,
 
+
+        },
+        phone: {
+            type: DataTypes.STRING,
+            unique: false,
+            allowNull: true,
+
+        }
+        ,
+        email: {
+            type: DataTypes.STRING,
+            unique: false,
+            allowNull: true,
+
+        },
+
+        age: {
+            type: DataTypes.INTEGER,
+            unique: false,
+            allowNull: true,
+
+        },
+        education_level: {
+            type: DataTypes.ENUM,
+            values: ['Pimaria', 'Bachiller', 'Tecnico', 'Tecnologo', 'Profesional', 'Postgrado', "Sin Formacion"],
+            allowNull: true,
         }
     },
     {
@@ -58,11 +84,16 @@ export const Comunity = sequelize.define(
     }
 );
 
+
+
+
 Comunity.hasMany(Agent, {
     foreignKey: "comunityId",
     sourceKey: "id",
 });
 Agent.belongsTo(Comunity, { foreignKey: "comunityId", targetId: "id" });
+
+
 
 Comunity.hasMany(Beneficiary, {
     foreignKey: "comunityId",

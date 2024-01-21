@@ -14,6 +14,9 @@ import { config } from 'dotenv';
 import userRoutes from "./routes/user.routes.js"
 import emitterRoutes from "./routes/emitter.routes.js"
 import municipalityRoutes from "./routes/municipalitys.routes.js"
+import regionalRoutes from "./routes/regionals.routes.js"
+import centerRoutes from "./routes/trainingCenter.routes.js"
+
 import typeComunityRoutes from "./routes/typeComunity.routes.js"
 import typeActionRoutes from "./routes/typeAction.routes.js"
 
@@ -71,6 +74,10 @@ app.use("/dependencys", dependencyRoutes)
 app.use("/emitters", emitterRoutes)
 app.use("/concertations", concertationRoutes)
 app.use("/municipalitys", municipalityRoutes)
+app.use("/regionals", regionalRoutes)
+app.use("/trainingcenters", centerRoutes)
+
+
 app.use("/agents", agentRoutes)
 app.use("/programs", programRoutes);
 app.use("/tasks", taskRoutes);

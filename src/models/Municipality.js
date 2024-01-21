@@ -1,6 +1,6 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../database/database.js";
-
+import { TrainingCenter } from "./TrainingCenter.js";
 
 export const Municipality = sequelize.define(
     "municipalitys",
@@ -22,3 +22,9 @@ export const Municipality = sequelize.define(
     }
 
 );
+
+Municipality.hasMany(TrainingCenter, {
+    foreignKey: "municipalityId",
+    sourceKey: "id",
+});
+TrainingCenter.belongsTo(Municipality, { foreignKey: "municipalityId", targetId: "id" });
