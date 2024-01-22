@@ -1,4 +1,4 @@
-import { FinancialFounding } from "../models/financialFounding.js";
+import { FinancialFounding } from "../models/FinancialFounding.js";
 import { Municipality } from "../models/Municipality.js";
 
 export async function getFinancialFoundings(req, res) {
