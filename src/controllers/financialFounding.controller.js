@@ -1,6 +1,6 @@
 import { FinancialFounding } from "../models/FinancialFounding.js";
 import { Municipality } from "../models/Municipality.js";
-
+// aa
 export async function getFinancialFoundings(req, res) {
     try {
         const financialfoundings = await FinancialFounding.findAll({
