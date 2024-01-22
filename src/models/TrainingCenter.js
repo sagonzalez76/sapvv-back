@@ -1,9 +1,7 @@
 
 import { DataTypes } from "sequelize";
 import { sequelize } from "../database/database.js";
-import { Agent } from "./Agent.js";
-import { Beneficiary } from "./Beneficiary.js";
-
+import { Enterprise } from "./Enterprise.js";
 
 export const TrainingCenter = sequelize.define(
     "trainingCenters",
@@ -35,3 +33,14 @@ export const TrainingCenter = sequelize.define(
         freezeTableName: true
     }
 );
+
+// TrainingCenter.hasOne(Enterprise);
+// Enterprise.belongsTo(TrainingCenter, { foreignKey: "trainingCenterId", targetKey: "id" });
+
+// Municipality.hasMany(TrainingCenter, {
+//     foreignKey: "municipalityId",
+//     sourceKey: "id",
+// });
+// TrainingCenter.belongsTo(Municipality, { foreignKey: "municipalityId", targetId: "id" });
+// YA ESTA EN MUNICIPALITY YA ESTA EN MUNICIPALITY YA ESTA EN MUNICIPALITY YA ESTA EN MUNICIPALITY YA ESTA EN MUNICIPALITY
+

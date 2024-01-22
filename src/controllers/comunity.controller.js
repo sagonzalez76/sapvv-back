@@ -1,10 +1,6 @@
 import { Sequelize } from "sequelize";
 import { ComunityMunicipality } from "../models/ComunityMunicipality.js";
 import { Comunity } from "../models/Comunity.js";
-import { TypeComunity } from "../models/TypeComunity.js";
-
-import { Municipality } from "../models/Municipality.js";
-
 
 
 export async function createComunity(req, res) {
@@ -66,7 +62,7 @@ export async function getComunitys(req, res) {
 
 export async function getHolders(req, res) {
     try {
-
+console.log("funciina");
         const comunitys = await Comunity.findAll({
             attributes: ["id", "name", "typeComunityId", "holder_type", "lastname", "id_type", "id_number", "genre"],
             include: { all: true, nested: true },
@@ -80,8 +76,8 @@ export async function getHolders(req, res) {
         res.json(comunitys);
 
     } catch (error) {
-        console.log('Este es el errorrrrrrrrrrrrrrrrrrrrrrr', error);
-        return res.status(500).json({ message: error });
+        console.log('Error en GetHolders', error);
+        return res.status(500).json({ message: 'Error en GetHolders', error });
     }
 }
 
@@ -103,8 +99,8 @@ export async function getEntrepreneurs(req, res) {
         res.json(comunitys);
 
     } catch (error) {
-        console.log('Este es el errorrrrrrrrrrrrrrrrrrrrrrr', error);
-        return res.status(500).json({ message: error });
+        console.log('Este es el error', error);
+        return res.status(500).json({ message: 'Error en GetEntrepreneurs', error });
     }
 }
 

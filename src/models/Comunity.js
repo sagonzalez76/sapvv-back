@@ -3,6 +3,7 @@ import { DataTypes } from "sequelize";
 import { sequelize } from "../database/database.js";
 import { Agent } from "./Agent.js";
 import { Beneficiary } from "./Beneficiary.js";
+import { Enterprise } from "./Enterprise.js";
 
 
 export const Comunity = sequelize.define(
@@ -94,9 +95,16 @@ Comunity.hasMany(Agent, {
 Agent.belongsTo(Comunity, { foreignKey: "comunityId", targetId: "id" });
 
 
-
 Comunity.hasMany(Beneficiary, {
     foreignKey: "comunityId",
     sourceKey: "id",
 });
 Beneficiary.belongsTo(Comunity, { foreignKey: "comunityId", targetId: "id" });
+
+
+Comunity.hasMany(Enterprise, {
+    foreignKey: "comunityId",
+    sourceKey: "id",
+});
+Enterprise.belongsTo(Comunity, { foreignKey: "comunityId", targetId: "id" });
+

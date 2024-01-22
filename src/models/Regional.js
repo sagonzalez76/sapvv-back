@@ -20,20 +20,10 @@ export const Regional = sequelize.define(
     }
 );
 
-Department.hasOne(Regional, {
-    foreignKey: 'departmentId',
-    sourceKey: 'id'
-});
-
-Regional.belongsTo(Department, {
-    foreignKey: 'departmentId',
-    targetKey: 'id'
-});
+// Department.hasOne(Regional);
+// Regional.belongsTo(Department);
 
 
-Regional.hasMany(TrainingCenter, {
-    foreignKey: "regionalId",
-    sourceKey: "id",
-});
-TrainingCenter.belongsTo(Regional, { foreignKey: "regionalId", targetId: "id" });
+Regional.hasMany(TrainingCenter);
+TrainingCenter.belongsTo(Regional, { foreignKey: "regionalId", targetKey: "id" });
 

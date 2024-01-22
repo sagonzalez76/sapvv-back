@@ -5,7 +5,9 @@ export async function getTrainingCenters(req, res) {
     try {
         const trainingcenters = await TrainingCenter.findAll({
             //TODO CON ATTRIBUTES ELEGIMOS LOS CAMPOS QUE QUEREMOS RETORNAR EN EL RES
-            attributes: ["id", "name", "code", "regionalId", "municipalityId"],
+            attributes: ["id", "name", "code", "regionalId",
+            //  "municipalityId"
+            ],
             include: {
                 all:true
             }
@@ -26,11 +28,16 @@ export async function createTrainingCenter(req, res) {
     try {
         let newTrainingCenter = await TrainingCenter.create(
             {
-                code, name, regionalId, municipalityId
+                code, 
+                name, 
+                regionalId,
+                //  municipalityId
 
             },
             {
-                fields: ["code","name","regionalId","municipalityId"],
+                fields: ["code","name","regionalId",
+                // "municipalityId"
+            ],
             }
         );
         return res.json(newTrainingCenter);
@@ -54,7 +61,9 @@ export async function getTrainingCenter(req, res) {
             },
             //TODO CON ATTRIBUTES ELEGIMOS LOS CAMPOS QUE QUEREMOS RETORNAR EN EL RES
             //EVITAMOS QUE SE ENVIE LA CONTRASENA
-            attributes: ["id", "name", "code", "municipalityId", "regionalId"],
+            attributes: ["id", "name", "code", 
+            // "municipalityId", 
+            "regionalId"],
 
         });
 
@@ -69,7 +78,9 @@ export async function getTrainingCenter(req, res) {
 export const updateTrainingCenter = async (req, res) => {
     try {
         const { id } = req.params;
-        const { code, name, regionalId, municipalityId } = req.body;
+        const { code, name, regionalId, 
+            // municipalityId 
+        } = req.body;
         console.log(req.body);
 
         const trainingcenter = await TrainingCenter.findByPk(id);
@@ -77,7 +88,7 @@ export const updateTrainingCenter = async (req, res) => {
         trainingcenter.code = code;
         trainingcenter.name = name;
         trainingcenter.regionalId = regionalId;
-        trainingcenter.municipalityId = municipalityId;
+        // trainingcenter.municipalityId = municipalityId;
 
 
         await trainingcenter.save();
@@ -104,15 +115,15 @@ export async function deleteTrainingCenter(req, res) {
 
 
 export async function getTrainingCenterMunicipalitys(req, res) {
-    const { id } = req.params;
-    try {
-        const municipalitys = await Municipality.findAll({
-            attributes: ["id", "trainingcenterId", "name"],
-            where: { trainingcenterId: id },
-        });
-        console.log(municipalitys);
-        res.json(municipalitys);
-    } catch (e) {
-        return res.status(500).json({ message: e.message });
-    }
+    // const { id } = req.params;
+    // try {
+    //     const municipalitys = await Municipality.findAll({
+    //         attributes: ["id", "trainingcenterId", "name"],
+    //         where: { trainingcenterId: id },
+    //     });
+    //     console.log(municipalitys);
+    //     res.json(municipalitys);
+    // } catch (e) {
+    //     return res.status(500).json({ message: e.message });
+    // }
 }

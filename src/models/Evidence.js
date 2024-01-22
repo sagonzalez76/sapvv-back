@@ -24,7 +24,7 @@ export const Evidence = sequelize.define(
                 'text/plain', 'text/html', 'application/msword', 'application/vnd.ms-excel', 'application/docx', 'docx', 'application/doc',// Tipos de texto
             ],
             allowNull: false,
-            notEmpty: true
+            notEmpty: true,
 
         }, url: {
             type: DataTypes.STRING,

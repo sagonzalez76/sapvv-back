@@ -1,5 +1,7 @@
+import { Enterprise } from "./Enterprise.js";
 import { DataTypes } from "sequelize";
 import { sequelize } from "../database/database.js";
+
 
 export const User = sequelize.define(
     "users",
@@ -32,3 +34,9 @@ export const User = sequelize.define(
         timestamps: false
     }
 )
+
+User.hasMany(Enterprise, {
+    foreignKey: "userId",
+    sourceKey: "id",
+});
+Enterprise.belongsTo(User, { foreignKey: "userId", targetId: "id" });

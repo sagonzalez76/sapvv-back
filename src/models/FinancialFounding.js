@@ -1,10 +1,11 @@
+
 import { DataTypes } from "sequelize";
 import { sequelize } from "../database/database.js";
 
 
 
-export const EconomicActivity = sequelize.define(
-    "economicActivitys",
+export const FinancialFounding = sequelize.define(
+    "financialFoundings",
     {
         id: {
             type: DataTypes.INTEGER,
@@ -12,15 +13,17 @@ export const EconomicActivity = sequelize.define(
             autoIncrement: true
         },
         name: {
-            type: DataTypes.STRING
-        },
-        code: {
-            type: DataTypes.STRING
-        }
+            type: DataTypes.STRING,
+            allowNull: true,
+            notEmpty: true,
+            unique: false
 
+        }
     },
     {
         timestamps: true
+    },
+    {
+        freezeTableName: true
     }
 );
-
