@@ -1,7 +1,7 @@
 
 import { DataTypes } from "sequelize";
 import { sequelize } from "../database/database.js";
-import { FinancialFounding } from "./financialFounding.js";
+import { FinancialFounding } from "./FinancialFounding.js";
 import { TrainingCenter } from "./TrainingCenter.js";
 import { EconomicActivity } from "./EconomicActivity.js";
 
