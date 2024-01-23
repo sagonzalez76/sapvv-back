@@ -17,6 +17,9 @@ import userRoutes from "./routes/user.routes.js"
 import emitterRoutes from "./routes/emitter.routes.js"
 import municipalityRoutes from "./routes/municipalitys.routes.js"
 import regionalRoutes from "./routes/regionals.routes.js"
+import measureRoutes from "./routes/measures.routes.js"
+import comunityAll from "./routes/comunityAll.routes.js"
+
 
 import typeComunityRoutes from "./routes/typeComunity.routes.js"
 import typeActionRoutes from "./routes/typeAction.routes.js"
@@ -42,6 +45,7 @@ import economicActivityRoutes from "./routes/economicActivity.routes.js"
 import enterpriseRoutes from "./routes/enterprises.routes.js"
 
 import productiveUnityRoutes from "./routes/productiveUnity.routes.js"
+import businessPlanRoutes from "./routes/businessPlan.routes.js"
 
 
 import downloadRoutes from "./routes/download.routes.js"
@@ -91,6 +95,9 @@ app.use("/emitters", emitterRoutes)
 app.use("/concertations", concertationRoutes)
 app.use("/municipalitys", municipalityRoutes)
 app.use("/regionals", regionalRoutes)
+app.use("/measures", measureRoutes)
+app.use("/all", comunityAll)
+
 
 
 app.use("/agents", agentRoutes)
@@ -98,9 +105,9 @@ app.use("/programs", programRoutes);
 app.use("/tasks", taskRoutes);
 app.use("/roles", rolesRoutes);
 app.use("/beneficiarys", beneficiaryRoutes);
-app.use("/comunitys", comunityRoutes); 
-app.use("/holders", holderRoutes); 
-app.use("/entrepreneurs",entrepreneurRoutes); 
+app.use("/comunitys", comunityRoutes);
+app.use("/holders", holderRoutes);
+app.use("/entrepreneurs", entrepreneurRoutes);
 
 app.use("/origins", originRoutes);
 app.use("/commitments", commitmentRoutes);
@@ -114,6 +121,8 @@ app.use("/financial_foundings", financialFoundingRoutes);
 app.use("/training_centers", trainingCenterRoutes);
 app.use("/enterprises", enterpriseRoutes);
 app.use("/productive_unity", productiveUnityRoutes);
+app.use("/business_plans", businessPlanRoutes);
+
 
 
 

@@ -12,14 +12,15 @@ export async function createEnterprise(req, res) {
             creation_date,
             observation,
             month,
-            type, 
+            type,
             financialFoundingId,
             trainingCenterId,
             municipalityId,
             comunityId,
             userId,
-            economicActivityId
-         } = req.body;
+            economicActivityId,
+            source_service
+        } = req.body;
 
         const newEnterprise = await Enterprise.create({
             name,
@@ -36,7 +37,8 @@ export async function createEnterprise(req, res) {
             municipalityId,
             comunityId,
             userId,
-            economicActivityId
+            economicActivityId,
+            source_service
 
         });
         res.json(newEnterprise);
@@ -70,13 +72,14 @@ export async function updateEnterprise(req, res) {
         creation_date,
         observation,
         month,
-        type, 
+        type,
         financialFoundingId,
         trainingCenterId,
         municipalityId,
         comunityId,
         userId,
-        economicActivityId
+        economicActivityId,
+        source_service
     } = req.body;
 
     try {
@@ -98,8 +101,10 @@ export async function updateEnterprise(req, res) {
         enterprise.comunityId = comunityId;
         enterprise.userId = userId;
         enterprise.economicActivityId = economicActivityId;
+        enterprise.source_service = source_service;
 
-        
+
+
         await enterprise.save();
 
         res.json(enterprise);
@@ -156,7 +161,8 @@ export async function getProductiveUnitys(req, res) {
                 "municipalityId",
                 "comunityId",
                 "userId",
-                "economicActivityId"
+                "economicActivityId",
+                "source_service"
             ],
             include: { all: true, nested: true },
             where: {
@@ -173,6 +179,53 @@ export async function getProductiveUnitys(req, res) {
         return res.status(500).json({ message: 'Error en GetEntrepreneurs', error });
     }
 }
+
+
+
+export async function getBusinessPlans(req, res) {
+    try {
+
+        const comunitys = await Enterprise.findAll({
+            attributes: [
+                "id",
+                "name",
+                "description",
+                "zone",
+                "address", // Supongo que hubo un error tipográfico, debería ser "address" en lugar de "adress"
+                "economic_sector",
+                "creation_date",
+                "observation",
+                "month",
+                "type",
+                "financialFoundingId",
+                "trainingCenterId",
+                "municipalityId",
+                "comunityId",
+                "userId",
+                "economicActivityId",
+                "source_service"
+            ],
+            include: { all: true, nested: true },
+            where: {
+                type: 'Plan Negocio'
+            },
+            order: [["id", "ASC"]],
+            limit: 1000000
+        });
+
+        res.json(comunitys);
+
+    } catch (error) {
+        console.log('Este es el error', error);
+        return res.status(500).json({ message: 'Error en GetEntrepreneurs', error });
+    }
+}
+
+
+
+
+
+
 
 export async function getProductiveUnity(req, res) {
     const { id } = req.params;
@@ -194,7 +247,41 @@ export async function getProductiveUnity(req, res) {
                 "municipalityId",
                 "comunityId",
                 "userId",
-                "economicActivityId"
+                "economicActivityId",
+                "source_service"
+
+            ],
+            include: { all: true, nested: false },
+            order: [["id", "DESC"]],
+        });
+        res.json(comunity);
+    } catch (error) {
+        return res.status(500).json({ message: error.message });
+    }
+}
+
+export async function getBusinessPlan(req, res) {
+    const { id } = req.params;
+    try {
+        const comunity = await Enterprise.findOne({
+            where: { id },
+            attributes: ["id",
+                "name",
+                "description",
+                "zone",
+                "address", // Supongo que hubo un error tipográfico, debería ser "address" en lugar de "adress"
+                "economic_sector",
+                "creation_date",
+                "observation",
+                "month",
+                "type",
+                "financialFoundingId",
+                "trainingCenterId",
+                "municipalityId",
+                "comunityId",
+                "userId",
+                "economicActivityId",
+                "source_service"
 
             ],
             include: { all: true, nested: false },

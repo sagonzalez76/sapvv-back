@@ -1,5 +1,6 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../database/database.js";
+import { Measure } from "./Measure.js";
 
 
 export const Commitment = sequelize.define(
@@ -25,3 +26,9 @@ export const Commitment = sequelize.define(
     }
 
 );
+
+Commitment.hasMany(Measure, {
+    foreignKey: "commitmentId",
+    sourceKey: "id",
+});
+Measure.belongsTo(Commitment, { foreignKey: "commitmentId", targetId: "id" });

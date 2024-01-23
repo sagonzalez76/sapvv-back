@@ -8,7 +8,8 @@ import {
     getHolders,
     getHolder, 
     getEntrepreneur,
-    getEntrepreneurs
+    getEntrepreneurs,
+    getAll
 } from "../controllers/comunity.controller.js";
 
 import { checkAuth } from "../middleware/authenticate.js";
@@ -27,6 +28,5 @@ router.get("/:id", getComunity);
 
 router.get("/holders", checkAuth, checkRoleAuth(['student', "director", 'juridico', 'enlace', 'dinamizador']), getHolders);
 router.get("/entrepreneurs", checkAuth, checkRoleAuth(['student', "director", 'juridico', 'enlace', 'dinamizador']), getEntrepreneurs);
-
 
 export default router;

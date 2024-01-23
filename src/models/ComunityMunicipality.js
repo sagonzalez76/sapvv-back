@@ -1,4 +1,3 @@
-// comunityMunicipality.js
 import { sequelize } from "../database/database.js";
 import { Comunity } from "./Comunity.js";
 import { Municipality } from "./Municipality.js";
@@ -6,7 +5,7 @@ import { Municipality } from "./Municipality.js";
 export const ComunityMunicipality = sequelize.define(
     'comunity_municipalities',
     {
-        // Puedes definir atributos si es necesario
+        // Aqui pueden ir atributos
     },
     {
         timestamps: true

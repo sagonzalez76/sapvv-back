@@ -53,7 +53,14 @@ export const Enterprise = sequelize.define(
         observation: {
             type: DataTypes.STRING,
         },
+        source_service: {
+            type: DataTypes.ENUM,
+            values: ['Resultado de Formacion SENA',
+                'Solicitud Ente Territorial',
+                'Remision otras Entidades',
+                'Interes Particular']
 
+        },
         month: {
             type: DataTypes.ENUM,
             values: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']

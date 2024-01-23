@@ -62,7 +62,7 @@ export async function getComunitys(req, res) {
 
 export async function getHolders(req, res) {
     try {
-console.log("funciina");
+        console.log("funciina");
         const comunitys = await Comunity.findAll({
             attributes: ["id", "name", "typeComunityId", "holder_type", "lastname", "id_type", "id_number", "genre"],
             include: { all: true, nested: true },
@@ -201,5 +201,28 @@ export async function getEntrepreneur(req, res) {
         res.json(comunity);
     } catch (error) {
         return res.status(500).json({ message: error.message });
+    }
+}
+
+
+
+export async function getAll(req, res) {
+    try {
+
+        const comunitys = await Comunity.findAll({
+            attributes: ["id", "name", "lastname"],
+            include: { all: true, nested: true },
+            // where: {
+            //     holder_type: 'Comunidad'
+            // },
+            order: [["id", "ASC"]],
+            // limit : 1
+        });
+
+        res.json(comunitys);
+
+    } catch (error) {
+        console.log('Este es el errorrrrrrrrrrrrrrrrrrrrrrr', error);
+        return res.status(500).json({ message: error });
     }
 }
