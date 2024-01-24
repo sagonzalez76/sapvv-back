@@ -17,7 +17,7 @@ const router = Router();
 router.post("/", createMunicipality);
 router.put("/:id", updateMunicipality);
 router.delete("/:id", deleteMunicipality);
-router.get("/", checkAuth, checkRoleAuth(['student', "director", 'juridico', 'enlace', 'dinamizador']), getMunicipalitys);
+router.get("/", checkAuth, checkRoleAuth(['administrador', "director", 'juridico', 'enlace', 'dinamizador']), getMunicipalitys);
 router.get("/:id", getMunicipality);
 
 export default router;

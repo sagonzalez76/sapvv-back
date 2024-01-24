@@ -16,7 +16,7 @@
 
 // // Routes
 // router.post("/", createProgram);
-// router.get("/", checkAuth, checkRoleAuth(['student', "director", 'juridico', 'enlace', 'dinamizador']), getPrograms);
+// router.get("/", checkAuth, checkRoleAuth(['administrador', "director", 'juridico', 'enlace', 'dinamizador']), getPrograms);
 // router.put("/:id", updateProgram);
 // router.delete("/:id", deleteProgram);
 

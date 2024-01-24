@@ -20,7 +20,7 @@ const router = Router();
 
 // Routes
 router.post("/", createAction);
-router.get("/", checkAuth, checkRoleAuth(['student', "director", 'juridico', 'enlace', 'dinamizador']), getActions);
+router.get("/", checkAuth, checkRoleAuth(['administrador', "director", 'juridico', 'enlace', 'dinamizador']), getActions);
 router.put("/:id", updateAction);
 router.delete("/:id", deleteAction);
 router.get("/:id", getAction);

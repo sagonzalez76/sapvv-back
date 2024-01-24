@@ -1,7 +1,6 @@
 
 import { DataTypes } from "sequelize";
 import { sequelize } from "../database/database.js";
-import { Enterprise } from "./Enterprise.js";
 
 export const TrainingCenter = sequelize.define(
     "trainingCenters",

@@ -69,6 +69,12 @@ export async function signUp(req, res) {
     return res.json(newUser);
 
   } catch (error) {
+
+    if (error.errors[0].message == 'email must be unique') {
+      return res.status(401).json({
+        message: 'El correo electronico ya existe.',
+      });
+    }
     res.status(500).json({
       message: error.message,
     });

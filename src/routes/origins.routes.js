@@ -17,7 +17,7 @@ const router = Router();
 router.post("/", createOrigin);
 router.put("/:id", updateOrigin);
 router.delete("/:id", deleteOrigin);
-router.get("/", checkAuth, checkRoleAuth(['student', "director", 'juridico', 'enlace', 'dinamizador']), getOrigins);
+router.get("/", checkAuth, checkRoleAuth(['administrador', "director", 'juridico', 'enlace', 'dinamizador']), getOrigins);
 router.get("/:id", getOrigin);
 
 export default router;

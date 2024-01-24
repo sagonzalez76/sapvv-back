@@ -15,7 +15,7 @@ const router = Router();
 
 // Routes
 router.post("/", createRole);
-router.get("/", checkAuth, checkRoleAuth(['student', "director", 'juridico', 'enlace', 'dinamizador']), getRoles);
+router.get("/", checkAuth, checkRoleAuth(['administrador', "director", 'juridico', 'enlace', 'dinamizador']), getRoles);
 router.put("/:id", updateRole);
 router.delete("/:id", deleteRole);
 router.get("/:id", getRole);

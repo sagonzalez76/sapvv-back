@@ -17,7 +17,7 @@ const router = Router();
 router.post("/", createRegional);
 router.put("/:id", updateRegional);
 router.delete("/:id", deleteRegional);
-router.get("/", checkAuth, checkRoleAuth(['student', "director", 'juridico', 'enlace', 'dinamizador']), getRegionals);
+router.get("/", checkAuth, checkRoleAuth(['administrador', "director", 'juridico', 'enlace', 'dinamizador']), getRegionals);
 router.get("/:id", getRegional);
 
 export default router;

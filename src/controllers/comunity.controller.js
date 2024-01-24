@@ -35,6 +35,12 @@ export async function createComunity(req, res) {
 
         res.json(newComunity);
     } catch (error) {
+
+        if (error.errors[0].message == 'id_number must be unique') {
+            return res.status(401).json({
+                message: 'El usuario ya existe. Por favor, verifique el numero de documento.',
+            });
+        }
         return res.status(500).json({ message: error.message });
     }
 }
@@ -142,6 +148,13 @@ export async function updateComunity(req, res) {
 
         res.json(comunity);
     } catch (error) {
+
+        if (error.errors[0].message == 'id_number must be unique') {
+            return res.status(401).json({
+                message: 'El usuario ya existe. Por favor, verifique el numero de documento.',
+            });
+        }
+
         return res.status(500).json({ message: error.message });
     }
 }

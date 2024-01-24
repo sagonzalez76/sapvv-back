@@ -90,6 +90,11 @@ export const updateUser = async (req, res) => {
 
     res.json(user);
   } catch (error) {
+    if (error.errors[0].message == 'email must be unique') {
+      return res.status(401).json({
+        message: 'El correo electronico ya existe.',
+      });
+    }
     return res.status(500).json({ message: error.message });
   }
 };

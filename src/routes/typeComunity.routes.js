@@ -16,7 +16,7 @@ import { checkRoleAuth } from "../middleware/roleAuthenticate.js";
 const router = Router();
 // Routes
 router.post("/", createTypeComunity);
-router.get("/", checkAuth, checkRoleAuth(['student', "director", 'juridico', 'enlace', 'dinamizador']), getTypeComunitys);
+router.get("/", checkAuth, checkRoleAuth(['administrador', "director", 'juridico', 'enlace', 'dinamizador']), getTypeComunitys);
 router.put("/:id", updateTypeComunity);
 router.delete("/:id", deleteTypeComunity);
 

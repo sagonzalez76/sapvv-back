@@ -8,6 +8,7 @@ export const checkRoleAuth = (roles) => async (req, res, next) => {
         const token = req.headers.authorization.split(' ').pop()
         // console.log('estes es lo que llega', req.headers);
         const tokenData = await verifyToken(token)
+    
         const userData = await User.findOne({
             where: { id: `${tokenData.id}` },
             include: {
@@ -19,7 +20,8 @@ export const checkRoleAuth = (roles) => async (req, res, next) => {
 
 
         });
-
+        // console.log(userData.role.description);
+        // console.log(roles);
         if ([].concat(roles).includes(userData.role.description)) {
             next()
         } else {

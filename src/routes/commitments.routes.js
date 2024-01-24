@@ -17,7 +17,7 @@ const router = Router();
 router.post("/", createCommitment);
 router.put("/:id", updateCommitment);
 router.delete("/:id", deleteCommitment);
-router.get("/", checkAuth, checkRoleAuth(['student', "director", 'juridico', 'enlace', 'dinamizador']), getCommitments);
+router.get("/", checkAuth, checkRoleAuth(['administrador', "director", 'juridico', 'enlace', 'dinamizador']), getCommitments);
 router.get("/:id", getCommitment);
 
 export default router;

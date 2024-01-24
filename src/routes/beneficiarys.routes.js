@@ -17,7 +17,7 @@ const router = Router();
 router.post("/", createBeneficiary);
 router.put("/:id", updateBeneficiary);
 router.delete("/:id", deleteBeneficiary);
-router.get("/", checkAuth, checkRoleAuth(['student', "director", 'juridico', 'enlace', 'dinamizador']), getBeneficiarys);
+router.get("/", checkAuth, checkRoleAuth(['administrador', "director", 'juridico', 'enlace', 'dinamizador']), getBeneficiarys);
 router.get("/:id", getBeneficiary);
 
 export default router;

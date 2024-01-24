@@ -1,6 +1,7 @@
 
 import { DataTypes } from "sequelize";
 import { sequelize } from "../database/database.js";
+import { Action } from "./Action.js";
 
 
 
@@ -38,4 +39,11 @@ export const Measure = sequelize.define(
         freezeTableName: true
     }
 );
+
+Measure.hasMany(Action, {
+    foreignKey: "measureId",
+    sourceKey: "id",
+});
+Action.belongsTo(Measure, { foreignKey: "measureId", targetId: "id" });
+
 

@@ -17,7 +17,7 @@ const router = Router();
 router.post("/", createAgent);
 router.put("/:id", updateAgent);
 router.delete("/:id", deleteAgent);
-router.get("/", checkAuth, checkRoleAuth(['student', "director", 'juridico', 'enlace', 'dinamizador']), getAgents);
+router.get("/", checkAuth, checkRoleAuth(['administrador', "director", 'juridico', 'enlace', 'dinamizador']), getAgents);
 router.get("/:id", getAgent);
 
 export default router;

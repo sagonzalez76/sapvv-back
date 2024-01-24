@@ -17,7 +17,7 @@ const router = Router();
 router.post("/", createMeasure);
 router.put("/:id", updateMeasure);
 router.delete("/:id", deleteMeasure);
-router.get("/", checkAuth, checkRoleAuth(['student', "director", 'juridico', 'enlace', 'dinamizador']), getMeasures);
+router.get("/", checkAuth, checkRoleAuth(['administrador', "director", 'juridico', 'enlace', 'dinamizador']), getMeasures);
 router.get("/:id", getMeasure);
 
 export default router;

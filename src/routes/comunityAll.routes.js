@@ -20,7 +20,7 @@ const router = Router();
 router.post("/", createComunity);
 router.put("/:id", updateComunity);
 router.delete("/:id", deleteComunity);
-router.get("/", checkAuth, checkRoleAuth(['student', "director", 'juridico', 'enlace', 'dinamizador']), getAll);
+router.get("/", checkAuth, checkRoleAuth(['administrador', "director", 'juridico', 'enlace', 'dinamizador']), getAll);
 router.get("/:id", getHolder);
 
 export default router;
