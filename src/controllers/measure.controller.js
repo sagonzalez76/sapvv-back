@@ -1,12 +1,13 @@
 import { Sequelize } from "sequelize";
 import { ComunityMeasure } from "../models/ComunityMeasure.js";
 import { Measure } from "../models/Measure.js";
+import { MeasureProgram } from "../models/MeasureProgram.js";
 
 
 export async function createMeasure(req, res) {
     try {
 
-        const { name, state, year, comunityIds, commitmentId } = req.body;
+        const { name, state, year, comunityIds, commitmentId, programIds } = req.body;
         console.log(req.body);
         const newMeasure = await Measure.create({
             name, state, year, commitmentId
@@ -14,9 +15,20 @@ export async function createMeasure(req, res) {
 
         // Asocia la comunidad a los municipios a través de la tabla intermedia
         if (comunityIds && comunityIds.length > 0) {
-            const associations = comunityIds.map(async (comunityId) => {
+            let associations = comunityIds.map(async (comunityId) => {
                 await ComunityMeasure.create({
                     comunityId,
+                    measureId: newMeasure.id
+                });
+            });
+            await Promise.all(associations);
+        }
+
+
+        if (programIds && programIds.length > 0) {
+            let associations = programIds.map(async (programId) => {
+                await MeasureProgram.create({
+                    programId,
                     measureId: newMeasure.id
                 });
             });
@@ -53,7 +65,7 @@ export async function getMeasures(req, res) {
 
 export async function updateMeasure(req, res) {
     const { id } = req.params;
-    const { name, state, year, comunityIds, commitmentId } = req.body;
+    const { name, state, year, comunityIds, commitmentId, programIds} = req.body;
     console.log(req.body);
     if (comunityIds === undefined) {
 
@@ -65,18 +77,25 @@ export async function updateMeasure(req, res) {
         measure.state = state;
         measure.year = year;
         measure.commitmentId = commitmentId;
-
-
         await measure.save();
 
         // Actualizar la relación con los municipios
         await ComunityMeasure.destroy({ where: { measureId: id } }); // Eliminar todas las asociaciones existentes
+        await MeasureProgram.destroy({ where: { measureId: id } }); // Eliminar todas las asociaciones existentes
 
         // Crear nuevas asociaciones
         if (comunityIds && comunityIds.length > 0) {
             await ComunityMeasure.bulkCreate(comunityIds.map(comunityId => ({
                 measureId: id,
                 comunityId: comunityId,
+            })));
+        }
+
+
+        if (programIds && programIds.length > 0) {
+            await MeasureProgram.bulkCreate(programIds.map(programId => ({
+                measureId: id,
+                programId: programId,
             })));
         }
 
@@ -113,3 +132,6 @@ export async function getMeasure(req, res) {
         return res.status(500).json({ message: error.message });
     }
 }
+
+
+

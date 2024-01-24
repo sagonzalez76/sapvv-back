@@ -1,9 +1,9 @@
 import { sequelize } from "../database/database.js";
-import { Comunity } from "./Comunity.js";
 import { Measure } from "./Measure.js";
+import { Program } from "./Program.js";
 
-export const ComunityMeasure = sequelize.define(
-    'comunity_measures',
+export const MeasureProgram = sequelize.define(
+    'measure_programs',
     {
         // Aqui pueden ir atributos
     },
@@ -16,7 +16,7 @@ export const ComunityMeasure = sequelize.define(
 );
 
 // Relaciones
-Comunity.belongsToMany(Measure, { through: ComunityMeasure });
-Measure.belongsToMany(Comunity, { through: ComunityMeasure });
+Measure.belongsToMany(Program, { through: MeasureProgram });
+Program.belongsToMany(Measure, { through: MeasureProgram });
 
 

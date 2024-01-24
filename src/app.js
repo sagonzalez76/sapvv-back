@@ -27,7 +27,7 @@ import typeActionRoutes from "./routes/typeAction.routes.js"
 import comunityRoutes from "./routes/comunitys.routes.js"
 import holderRoutes from "./routes/holders.routes.js"
 import entrepreneurRoutes from "./routes/entrepreneurs.routes.js"
-
+import worksheetRoutes from "./routes/worksheets.routes.js"
 
 import originRoutes from "./routes/origins.routes.js"
 import commitmentRoutes from "./routes/commitments.routes.js"
@@ -94,6 +94,8 @@ app.use("/dependencys", dependencyRoutes)
 app.use("/emitters", emitterRoutes)
 app.use("/concertations", concertationRoutes)
 app.use("/municipalitys", municipalityRoutes)
+app.use("/worksheets", worksheetRoutes)
+
 app.use("/regionals", regionalRoutes)
 app.use("/measures", measureRoutes)
 app.use("/all", comunityAll)

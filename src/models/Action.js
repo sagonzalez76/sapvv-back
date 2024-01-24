@@ -1,6 +1,7 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../database/database.js";
 import { Evidence } from "./Evidence.js";
+import { Worksheet } from "./Worksheet.js";
 
 
 export const Action = sequelize.define(
@@ -35,3 +36,12 @@ Action.hasMany(Evidence, {
     sourceKey: "id",
 });
 Evidence.belongsTo(Action, { foreignKey: "actionId", targetId: "id" });
+
+
+Action.hasMany(Worksheet, {
+    foreignKey: "actionId",
+    sourceKey: "id",
+});
+Worksheet.belongsTo(Action, { foreignKey: "actionId", targetId: "id" });
+
+

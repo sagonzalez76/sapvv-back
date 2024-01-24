@@ -21,14 +21,14 @@ export async function getActions(req, res) {
 }
 
 export async function createAction(req, res) {
-    const { description, done, dependencyId, typeActionId } = req.body;
+    const { description, done, dependencyId, typeActionId, measureId } = req.body;
     try {
         let newAction = await Action.create(
             {
-                description, done, dependencyId, typeActionId
+                description, done, dependencyId, typeActionId, measureId
             },
             {
-                fields: ["description", "done", "dependencyId", "typeActionId"],
+                fields: ["description", "done", "dependencyId", "typeActionId", "measureId"],
             }
         );
         return res.json(newAction);
@@ -59,13 +59,15 @@ export async function getAction(req, res) {
 export const updateAction = async (req, res) => {
     try {
         const { id } = req.params;
-        const { description, done, dependencyId, typeActionId  } = req.body;
+        const { description, done, dependencyId, typeActionId, measureId  } = req.body;
 
         const action = await Action.findByPk(id);
         action.description = description;
         action.done = done;
         action.dependencyId = dependencyId;
         action.typeActionId = typeActionId;
+        action.measureId = measureId;
+
 
 
         await action.save();
